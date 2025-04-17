@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting Xi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+</head>
+
+<body class="bg-body-tertiary">
+    <div class="container-fluid col-lg-6 col-8 mx-auto mt-lg-4 mt-3 p-lg-4 p-2 shadow rounded-3">
+        <h4 class="text-center text-decoration-underline animate__animated animate__bounce">Lineup</h4>
+        <p class="text-center">This web application helps football managers to add their selected players to a list</p>
+        <input type="text" class="form-control shadow-none my-lg-3 my-2" placeholder="Add starters here" id="player">
+        <button onclick="addPlayers()" class="btn btn-success my-3 w-100">Add</button>
+
+        <div class="" id="starters"></div>
+
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
