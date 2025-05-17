@@ -1,0 +1,92 @@
+div {
+    --bg-light: #efefef;
+    --bg-dark: #707070;
+    --clr: #58bc82;
+    --clr-alpha: #9c9c9c60;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+    /* text-align: center; */
+    margin: auto;
+}
+
+div .input-span {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+div input[type="email"],
+div input[type="name"],
+div input[type="password"] {
+    border-radius: 0.5rem;
+    padding: 1rem 0.75rem;
+    width: 100%;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--clr-alpha);
+    outline: 2px solid var(--bg-dark);
+}
+
+div input[type="email"]:focus,
+div input[type="name"]:focus,
+div input[type="password"]:focus {
+    outline: 2px solid var(--clr);
+}
+.manager {
+    /* margin-left: 0px; */
+    align-self: flex-start;
+    color: var(--clr);
+    font-weight: 600;
+}
+
+.label {
+    align-self: flex-start;
+    color: var(--clr);
+    font-weight: 600;
+}
+
+.club {
+    align-self: flex-start;
+    color: var(--clr);
+    font-weight: 600;
+}
+
+
+
+div .submit {
+    margin-left: 20px;
+    padding: 1rem 5.85rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    border-radius: 3rem;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+    border: none;
+    cursor: pointer;
+    transition: all 300ms;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+div .submit:hover {
+    background-color: var(--clr);
+    color: var(--bg-dark);
+}
+
+.span {
+    text-decoration: none;
+    color: var(--bg-dark);
+}
+
+.span a {
+    color: var(--clr);
+}
