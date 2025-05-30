@@ -1,26 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Starting Xi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
-<body class="bg-body-tertiary">
-    <div class="container-fluid col-lg-6 col-8 mx-auto mt-lg-4 mt-3 p-lg-4 p-2 shadow rounded-3">
-        <h4 class="text-center text-decoration-underline animate__animated animate__bounce">Lineup</h4>
-        <p class="text-center">This web application helps football managers to add their selected players to a list</p>
-        <input type="text" class="form-control shadow-none my-lg-3 my-2" placeholder="Add starters here" id="player">
-        <button onclick="addPlayers()" class="btn btn-success my-3 w-100">Add</button>
+<style>
+    body {
+        margin: 0;
+        position: relative;
+        height: 100vh;
+    }
 
-        <div class="" id="starters"></div>
+    select option[disabled] {
+        color: #6B7280;
+}
+    
+
+    /* GK */
+    .circleone {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: 320px;
+        left: 1070px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /* Right CB */
+    .circletwo {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: 192px;
+        left: 955px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /* Left CB */
+    .circlethree {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: 265px;
+        left: 955px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /* Right Back */
+    .circlefour {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        bottom: 60px;
+        left: 950px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /* Left Back */
+    .circlefive {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: 280px;
+        left: 953px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /* Center Mid */
+    .circlesix {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: 20px;
+        left: 880px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /* Left Mid */
+    .circleseven {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: 100px;
+        left: 862px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /* Right Mid */
+    .circleeight {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        bottom: 225px;
+        left: 860px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /*Left Wing */
+    .circlenine {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        top: 42px;
+        left: 775px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /*Right Wing */
+    .circleten {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        bottom: 420px;
+        left: 775px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    /*Center Forward */
+    .circleeleven {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        bottom: 280px;
+        left: 785px;
+        border-radius: 100%;
+        background-color: #fff;
+    }
+
+    .arrange {
+
+        margin-right: 200px;
+    }
+</style>
+
+<body class="bg-body-tertiary  p-2">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 text-light h1 fs-5">X.i</span>
+        </div>
+    </nav>
+
+    <!-- From Uiverse.io by nathann09 -->
+    <div class="d-flex arrange">
+        <div class="form ">
+            <p class="form-title">Select your starting players</p>
+            <p class="text-center">Fill players info below</p>
+
+            <div class="input-container p-5-lg p-3-sm">
+
+                <label for="" class="mt-4-lg mt-2">Player's name</label>
+                <input type="text" id="playerName" placeholder="e.g. Paul Pogba">
+
+                <label for="" class="mt-4-lg mt-3">Player's number</label>
+                <input type="number" id="playerNum" placeholder="e.g. 6">
+
+                <label for="" class="mt-4-lg mt-3">Player's position</label>
+                <select class="form-select edit-select" id="roleSelect" aria-label="Default select example">
+                    <option value="" disabled selected>e.g. CM</option>
+                    <option value="GK" id="keeper">GK</option>
+                    <option value="Right CB" id="rightCb">Right CB</option>
+                    <option value="Left CB" id="leftCb">Left CB</option>
+                    <option value="RB" id="rightBack">RB</option>
+                    <option value="LB" id="leftBack">LB</option>
+                    <option value="LM" id="leftMid">LM</option>
+                    <option value="CM" id="centralMid">CM</option>
+                    <option value="RM" id="rightMid">RM</option>
+                    <option value="LW" id="leftWing">LW</option>
+                    <option value="CF" id="striker">CF</option>
+                    <option value="RW" id="rightWing">RW</option>
+                </select>
+
+            </div>
+
+            <audio src="./aud/stadio-343738.mp3" id="addedSound"></audio>
+
+            <button class="submit m-4-lg mt-5 mt-3-lg m-2-sm" onclick="addPlayer()" id="addPlayerBtn">
+                Add player to lineup
+            </button>
+        </div>
+        <div class="d-flex">
+            <div class="arrange">
+                <div class="circleone"></div>
+                <div class="circletwo"></div>
+                <div class="circlethree"></div>
+                <div class="circlefour"></div>
+                <div class="circlefive"></div>
+                <div class="circlesix"></div>
+                <div class="circleseven"></div>
+                <div class="circleeight"></div>
+                <div class="circlenine"></div>
+                <div class="circleten"></div>
+                <div class="circleeleven"></div>
+            </div>
+
+            <div class="field-lg container-fluid mx-auto mt-lg-3 mt-3 p-lg-4 p-2-sm shadow rounded-3">
+
+                <img src="./img/finalLine.png" width="900rem" alt="">
+
+            </div>
+        </div>
 
     </div>
+
+
+    <img src="./img/sm.png" alt="field-sm" class="field-sm" style="display: none;">
+
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="script.js"></script>
+
+
+
 </html>
+
+<!-- <script>
+    const apiKey = "18e3805858c16b79a81eba34f8159e59"
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+</script> -->

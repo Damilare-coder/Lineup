@@ -1,5 +1,6 @@
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+
+document.addEventListener('keyword', (e)=>{
+    if(e.key == 'Enter'){
         signUp();
     }
 });
@@ -22,7 +23,19 @@ const toast = (text, background, color, position = 'right') => {
     }).showToast();
 }
 
+
+
 let allManagers = []
+
+
+if (localStorage.users) {
+    let retrieved = JSON.parse(localStorage.getItem('users'))
+    console.log(retrieved);
+    allUsers = retrieved
+
+} else {
+    allManagers = []
+}
 
 const signUp = () => {
     if (coach.value == '' || email.value == '' || club.value == '' || password.value == '') {
@@ -50,6 +63,14 @@ const signUp = () => {
     const pass = document.getElementById('password').value;
 
     const userObj = { mName, mail, mClub, pass }
+    let found = allUsers.find(eachUser => eachUser.mail == mail)
+        console.log(found);
+
+        
+    if (found == undefined) {
+        allUsers.push(userObj)
+        toast('Sign up successful 😁', '#006400', '#fff')
+        console.log(allUsers);
 
     allManagers.push(userObj)
 
@@ -63,4 +84,4 @@ const signUp = () => {
     // window.location.href = 'signin.html'
 
 }
-}
+}}
